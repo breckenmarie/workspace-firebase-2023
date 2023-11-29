@@ -1,22 +1,23 @@
 const firebaseConfig = {
-  apiKey: "AIzaSyDZIAVnBvB-GHlaDDO2GbOFjQhVvleb344",
-  authDomain: "database2023test.firebaseapp.com",
-  projectId: "database2023test",
-  storageBucket: "database2023test.appspot.com",
-  messagingSenderId: "352598568614",
-  appId: "1:352598568614:web:b1acd2e65514f8050f8e67",
-  measurementId: "G-6EF9ZJX352"
+  apiKey: "AIzaSyABi9E0HRnJ94CBuBYyPz-SHlWIN7TC68o",
+  authDomain: "bmerilldatabase2023.firebaseapp.com",
+  projectId: "bmerilldatabase2023",
+  storageBucket: "bmerilldatabase2023.appspot.com",
+  messagingSenderId: "700492951981",
+  appId: "1:700492951981:web:f520a3b43ae781f3d27124",
+  measurementId: "G-WLDY7W6T7Y"
 }; 
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 
 // save the data
 $('#Login').submit(function (e) {
   e.preventDefault();
   // get the user name and password from form
   // You need to change this.
-  var email = 'yilianz4@gmail.com';
-  var password = 'ddsgagafda';
+  var email = 'bmerrill@usca.edu';
+  var password = 'p@ssword!';
 
   firebase
     .auth()
