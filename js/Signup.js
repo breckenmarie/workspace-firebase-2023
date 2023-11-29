@@ -1,4 +1,4 @@
-var firebaseConfig = {
+const firebaseConfig = {
   apiKey: "AIzaSyABi9E0HRnJ94CBuBYyPz-SHlWIN7TC68o",
   authDomain: "bmerilldatabase2023.firebaseapp.com",
   projectId: "bmerilldatabase2023",
@@ -8,25 +8,43 @@ var firebaseConfig = {
   measurementId: "G-WLDY7W6T7Y"
 };
 // Initialize Firebase
+console.log(firebaseConfig);
 firebase.initializeApp(firebaseConfig);
+
 
 // save the data
 $("#signup-form").submit(function(e) {
   e.preventDefault();
   // get the username(email) and password from the form
   // change the following code
-  //var email = ;
-  //var password = ;
+  var username = $('input[name="fullname"]').val();
+  var emailaddress = $('input[name="username"]').val();
+  var password = $('input[name="password"]').val();
+  var confirmedpassword = $('input[name="cpassword"]').val();
+
+  console.log(username, emailaddress, password, confirmedpassword);
 
   // create a user with email address and password
   firebase
     .auth()
-    .createUserWithEmailAndPassword(email, password)
-    .then(user => {
+    .createUserWithEmailAndPassword(emailaddress, password)
+    .then((result) => {
       // Signed in
-      // ...
-      console.log("You are signed up");
-      window.location.href = "Login.html";
+      let user = result.user;
+      user.updateProfile({
+        displayName: username
+      }).then(() => {
+        console.log("update profile successfully!");
+        console.log(user.displayName, "are signed up"); 
+
+        var date = "Wed, 29 NOV 2023 07:28:00 GMT";
+        var userinformation = {
+          "username": user.displayName,
+          "email": emailaddress,
+          "signupDate": date
+        };
+      });
+  
       
     })
     .catch(error => {

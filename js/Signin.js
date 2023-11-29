@@ -64,5 +64,5 @@ $('#google').click(function(){
     //the firebase.auth.AuthCredential type that was used
     var credential = error.credential;
   });
-  
+
 });
